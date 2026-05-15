@@ -20,6 +20,6 @@ func _physics_process(delta: float) -> void:
 	if direction_Horizontal:
 		velocity.x = direction_Horizontal * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, SPEED, SPEED)
 
 	move_and_slide()
