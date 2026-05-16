@@ -10,7 +10,7 @@ height = 96.0
 animations = [{
 "frames": [],
 "loop": true,
-"name": &"ide",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -22,5 +22,5 @@ shape = SubResource("CapsuleShape2D_iu0dc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1226825251]
 sprite_frames = SubResource("SpriteFrames_le3lr")
-animation = &"ide"
-autoplay = "ide"
+animation = &"idle"
+autoplay = "idle"
