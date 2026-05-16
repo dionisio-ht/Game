@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://1c3i8vcfaeyu" path="res://scripts/player.gd" id="1_le3lr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iu0dc"]
-radius = 30.0
-height = 96.0
+radius = 9.0
+height = 32.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_le3lr"]
 animations = [{
@@ -24,3 +24,11 @@ shape = SubResource("CapsuleShape2D_iu0dc")
 sprite_frames = SubResource("SpriteFrames_le3lr")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="ray_left" type="RayCast2D" parent="." unique_id=1430785204]
+modulate = Color(1, 0.11764706, 1, 1)
+target_position = Vector2(-10, 0)
+
+[node name="ray_right" type="RayCast2D" parent="." unique_id=1186782632]
+modulate = Color(1, 0.12941177, 1, 1)
+target_position = Vector2(10, 0)
