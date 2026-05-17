@@ -3,6 +3,7 @@ extends CharacterBody2D
 ##Referencias
 @onready var ray_left: RayCast2D = $ray_left
 @onready var ray_right: RayCast2D = $ray_right
+@onready var animacao: AnimatedSprite2D = $AnimatedSprite2D
 
 ##Velocidade Padrão
 const SPEED = 300.0
@@ -57,6 +58,10 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	##Animações
+	if direction_Horizontal > 0:
+		animacao.flip_h = false
+	elif direction_Horizontal < 0:
+		animacao.flip_h = true
 	
 	move_and_slide()
 	
