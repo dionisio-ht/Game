@@ -5,8 +5,9 @@ extends CharacterBody2D
 @onready var ray_right: RayCast2D = $ray_right
 @onready var animacao: AnimatedSprite2D = $AnimatedSprite2D
 
+
 ##Velocidade Padrão
-const SPEED = 300.0
+const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 
 ##Velocidade na Parede
@@ -20,7 +21,18 @@ var wall_direction: int = 0
 ## Vriavel para travar o Movimento no Vetor 'X' ou 'Y'
 var mov_lock := 0.0
 
+##Funções para a Mecanica na Parede
+func start_wall_slide(left, right):
+	is_wall = true
+	velocity.y = min(velocity.y, wall_slide_speed)
+	wall_direction = 1 if left else -1
 
+func stop_wall_slide():
+	
+	is_wall = false
+	wall_direction = 0
+
+##Função Main
 func _physics_process(delta: float) -> void:
 	##Timer de bloqueio
 	if mov_lock > 0:
@@ -57,23 +69,25 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	##Animações
+	## Flip
 	if direction_Horizontal > 0:
 		animacao.flip_h = false
 	elif direction_Horizontal < 0:
 		animacao.flip_h = true
+
+	## Animações
+	if is_on_floor():
+		if direction_Horizontal != 0:
+			animacao.play("run")
+		else:
+			animacao.play("idle")
+	else:
+		if velocity.y < 0:
+			animacao.play("jump")
+		else:
+			if animacao.animation != ("queda"):
+				animacao.play("queda")
+
+			
 	
 	move_and_slide()
-	
-func start_wall_slide(left, right):
-	is_wall = true
-	velocity.y = min(velocity.y, wall_slide_speed)
-	wall_direction = 1 if left else -1
-
-func stop_wall_slide():
-	is_wall = false
-	wall_direction = 0
-	
-
-
-	

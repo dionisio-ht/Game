@@ -118,7 +118,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"queda",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -152,9 +152,9 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_le3lr")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.9469259
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1827545666]
+visible = false
 position = Vector2(0, 7.75)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_opfg8")
@@ -172,3 +172,6 @@ scale = Vector2(2, 2)
 target_position = Vector2(7.5, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1469505818]
+limit_left = 0
+limit_top = 0
+limit_bottom = 1000
