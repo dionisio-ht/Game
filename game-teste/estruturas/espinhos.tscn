@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://i8ind0253fdp"]
+
+[ext_resource type="Script" uid="uid://baf0imjjxc3oy" path="res://scripts/espinho.gd" id="1_sa1bg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hqx3"]
+size = Vector2(8, 6)
+
+[node name="Espinhos" type="Area2D" unique_id=1195926252]
+script = ExtResource("1_sa1bg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=796746415]
+shape = SubResource("RectangleShape2D_8hqx3")
+debug_color = Color(0.9784439, 0, 0.3999081, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
