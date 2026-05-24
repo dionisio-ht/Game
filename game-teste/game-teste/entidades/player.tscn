@@ -1,0 +1,217 @@
+[gd_scene format=3 uid="uid://y7ce21sapobb"]
+
+[ext_resource type="Script" uid="uid://1c3i8vcfaeyu" path="res://scripts/player.gd" id="1_le3lr"]
+[ext_resource type="Texture2D" uid="uid://b2vajjjrgal4s" path="res://sprites/Knight_Parado.png" id="2_11m8g"]
+[ext_resource type="Texture2D" uid="uid://ddkxajpt34qnu" path="res://sprites/Knight_Andando.png" id="3_kp4u0"]
+[ext_resource type="Texture2D" uid="uid://bnrsh7elufe26" path="res://sprites/Knight_Pulo.png" id="3_opfg8"]
+[ext_resource type="Texture2D" uid="uid://cs0t3wv75c5ux" path="res://sprites/Knight_Queda.png" id="4_2qu0p"]
+[ext_resource type="Texture2D" uid="uid://3ed2l1cxo836" path="res://sprites/Coracao.png" id="6_2qu0p"]
+[ext_resource type="PackedScene" uid="uid://d04jyd6hqj4t6" path="res://entidades/pausa.tscn" id="6_7y4ih"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp4u0"]
+atlas = ExtResource("2_11m8g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p7bn"]
+atlas = ExtResource("2_11m8g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opfg8"]
+atlas = ExtResource("2_11m8g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qu0p"]
+atlas = ExtResource("2_11m8g")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y4ih"]
+atlas = ExtResource("2_11m8g")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wo38"]
+atlas = ExtResource("3_opfg8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7jkh"]
+atlas = ExtResource("3_opfg8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq7hh"]
+atlas = ExtResource("3_opfg8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bqy4"]
+atlas = ExtResource("4_2qu0p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_remub"]
+atlas = ExtResource("4_2qu0p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o2oh"]
+atlas = ExtResource("4_2qu0p")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4ns2"]
+atlas = ExtResource("3_kp4u0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8mye"]
+atlas = ExtResource("3_kp4u0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd8fs"]
+atlas = ExtResource("3_kp4u0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlwsy"]
+atlas = ExtResource("3_kp4u0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcte5"]
+atlas = ExtResource("3_kp4u0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_le3lr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp4u0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0p7bn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opfg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qu0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y4ih")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wo38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7jkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq7hh")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bqy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_remub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2o2oh")
+}],
+"loop": false,
+"name": &"queda",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4ns2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8mye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd8fs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlwsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcte5")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opfg8"]
+size = Vector2(14, 18.25)
+
+[node name="Player" type="CharacterBody2D" unique_id=1772324300]
+script = ExtResource("1_le3lr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1226825251]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_le3lr")
+animation = &"jump"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1827545666]
+visible = false
+position = Vector2(0, 7.75)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_opfg8")
+
+[node name="ray_left" type="RayCast2D" parent="." unique_id=1430785204]
+modulate = Color(1, 0.11764706, 1, 1)
+position = Vector2(0, 4)
+scale = Vector2(2, 2)
+target_position = Vector2(-7.5, 0)
+
+[node name="ray_right" type="RayCast2D" parent="." unique_id=1186782632]
+modulate = Color(1, 0.12941177, 1, 1)
+position = Vector2(0, 4)
+scale = Vector2(2, 2)
+target_position = Vector2(7.5, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1469505818]
+limit_left = 0
+limit_top = 0
+limit_bottom = 1000
+
+[node name="Vida" type="CanvasLayer" parent="." unique_id=868091396]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Vida" unique_id=915382885]
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 138.0
+offset_bottom = 48.0
+
+[node name="coracoes" type="TextureRect" parent="Vida/HBoxContainer" unique_id=1139928173]
+clip_contents = true
+layout_direction = 1
+layout_mode = 2
+texture = ExtResource("6_2qu0p")
+expand_mode = 2
+
+[node name="coracoes2" type="TextureRect" parent="Vida/HBoxContainer" unique_id=660690924]
+clip_contents = true
+layout_direction = 1
+layout_mode = 2
+texture = ExtResource("6_2qu0p")
+expand_mode = 2
+
+[node name="coracoes3" type="TextureRect" parent="Vida/HBoxContainer" unique_id=1368128952]
+clip_contents = true
+layout_direction = 1
+layout_mode = 2
+texture = ExtResource("6_2qu0p")
+expand_mode = 2
+
+[node name="Control" parent="Vida" unique_id=1868488249 instance=ExtResource("6_7y4ih")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 0.0
+offset_bottom = 0.0
