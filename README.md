@@ -7,3 +7,4 @@ Desenvolvedores:
 
 Dionisio Neto / dionisio-ht / dionisio.martins.neto2006@gmail.com
 Kaiky Mattos / Atlas1155 /
+Fabyano / avelar630 / 
