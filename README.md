@@ -5,6 +5,6 @@ Este trabalho tem como foco enternder a linguagem de programação GDScript.
 
 Desenvolvedores:
 
-Dionisio Neto / dionisio-ht / dionisio.martins.neto2006@gmail.com
-Kaiky Mattos / Atlas1155 /
-Fabyano / avelar630 / 
+Dionisio Neto / dionisio-ht / dionisio.martins.neto2006@gmail.com;
+Kaiky Mattos / Atlas1155 /;
+Fabyano / avelar630 /;
