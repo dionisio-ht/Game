@@ -3,9 +3,17 @@ extends CharacterBody2D
 ##Referencias
 @onready var ray_left: RayCast2D = $ray_left
 @onready var ray_right: RayCast2D = $ray_right
+@onready var animacao: AnimatedSprite2D = $AnimatedSprite2D
+
+###Fazendo variaveis de vida e dano
+@export var vidaMaxima := 3
+@export var forcaDano := -350.0 # para lançar o personagem pra cima
+@export var invencivel := false
+var vida := vidaMaxima
+var listaCoracoes : Array[TextureRect]
 
 ##Velocidade Padrão
-const SPEED = 300.0
+const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 
 ##Velocidade na Parede
@@ -19,7 +27,71 @@ var wall_direction: int = 0
 ## Vriavel para travar o Movimento no Vetor 'X' ou 'Y'
 var mov_lock := 0.0
 
+func _ready() -> void:
+	var Coracoes = $Vida/HBoxContainer
+	for child in Coracoes.get_children():
+		listaCoracoes.append(child)
+	print(listaCoracoes)
 
+##Funcao de receber dano
+func tomarDano(damage):
+	if invencivel: # se tomou dano recentemente, nao tomará
+		return
+	
+	vida -= damage #reduzindo a variavel da vida pelo dano
+	print("Vida: ", vida)
+	atualizarVida()
+	
+	# se a vida chegar a zero
+	if vida <= 0:
+		morrer() #ativa a funcao de morte
+	
+	#depois que tomar dano, entra em frames de invencibilidade
+	invencivel = true
+	
+	#ativar animação visual de invencibilidade
+	piscar()
+	
+	#tempo que dura a invencibilidade pós-dano
+	await get_tree().create_timer(1.0).timeout
+	
+	#retorna ao estado normal
+	invencivel = false
+	
+func morrer():
+	print("Você morreu")
+	
+	await get_tree().create_timer(0.5).timeout
+	
+	get_tree().reload_current_scene()
+
+func piscar():
+	for i in range(10):
+		animacao.visible = !animacao.visible #ficar piscando o sprite
+		await get_tree().create_timer(0.1).timeout #intervalo de tempo para piscar
+	
+func atualizarVida():
+	for i in range(listaCoracoes.size()): #entrar no vetor de vidas
+		listaCoracoes[i].visible = i < vida #atualizar com base na vida atual
+	# impulso para cima ao tomar dano
+	
+	velocity.y = forcaDano
+	mov_lock = 0.2
+
+# -----------------------------------------------------
+
+##Funções para a Mecanica na Parede
+func start_wall_slide(left, right):
+	is_wall = true
+	velocity.y = min(velocity.y, wall_slide_speed)
+	wall_direction = 1 if left else -1
+
+func stop_wall_slide():
+	
+	is_wall = false
+	wall_direction = 0
+
+##Função Main
 func _physics_process(delta: float) -> void:
 	##Timer de bloqueio
 	if mov_lock > 0:
@@ -56,19 +128,25 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	##Animações
+	## Flip
+	if direction_Horizontal > 0:
+		animacao.flip_h = false
+	elif direction_Horizontal < 0:
+		animacao.flip_h = true
+
+	## Animações
+	if is_on_floor():
+		if direction_Horizontal != 0:
+			animacao.play("run")
+		else:
+			animacao.play("idle")
+	else:
+		if velocity.y < 0:
+			animacao.play("jump")
+		else:
+			if animacao.animation != ("queda"):
+				animacao.play("queda")
+
+			
 	
 	move_and_slide()
-	
-func start_wall_slide(left, right):
-	is_wall = true
-	velocity.y = min(velocity.y, wall_slide_speed)
-	wall_direction = 1 if left else -1
-
-func stop_wall_slide():
-	is_wall = false
-	wall_direction = 0
-	
-
-
-	
