@@ -7,6 +7,6 @@ Desenvolvedores:
 
 Dionisio Neto / dionisio-ht / dionisio.martins.neto2006@gmail.com;
 
-Kaiky Mattos / Atlas1155 /;
+Kaiky Mattos / Atlas1155 / mattoskaiky@gmail.com;
 
-Fabyano / avelar630 /;
+Fabyano Avelar/ avelar630 / ;
